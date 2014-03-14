@@ -26,6 +26,11 @@ public:
 	{
 
 	}
+
+	virtual ~chat_message()
+	{
+
+	}
 };
 
 
