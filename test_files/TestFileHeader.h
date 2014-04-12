@@ -33,6 +33,8 @@ void va_list_test();
 
 void timer_test();
 
+void thread_lib_test();
+
 void test_file_funcs()
 {
 //	core_down_test();
@@ -57,7 +59,9 @@ void test_file_funcs()
 
 //	va_list_test();
 
-	timer_test();
+//	timer_test();
+
+	thread_lib_test();
 }
 
 
