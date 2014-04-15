@@ -46,7 +46,24 @@ public:
 	void show() {}
 };
 
+class ProductC
+{
+public:
+	virtual ~ProductC(){}
+	virtual void show() = 0;
+};
 
+class ProductC1 : public ProductC
+{
+public:
+	void show() {}
+};
+
+class ProductC2 : public ProductC
+{
+public:
+	void show() {}
+};
 
 
 class AbstractFactory
@@ -58,6 +75,7 @@ public:
 public:
 	virtual ProductA* create_product_a() = 0;
 	virtual ProductB* create_product_b() = 0;
+	virtual ProductC* create_product_c() = 0;
 };
 
 
@@ -72,6 +90,10 @@ public:
 	{
 		return new ProductB1();
 	}
+	ProductC* create_product_c()
+	{
+		return new ProductC1();
+	}
 };
 
 class Factory2 : public AbstractFactory
@@ -84,6 +106,10 @@ public:
 	ProductB* create_product_b()
 	{
 		return new ProductB2();
+	}
+	ProductC* create_product_c()
+	{
+		return new ProductC2();
 	}
 };
 
