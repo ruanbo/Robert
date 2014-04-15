@@ -2,8 +2,10 @@
  * EpollTest.cpp
  *
  *  Created on: Mar 13, 2014
- *      Author: Robert
+ *      Author: From network  http://blog.csdn.net/sparkliang/article/details/4770655
  */
+
+
 
 
 #include "Define.h"
