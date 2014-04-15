@@ -2,7 +2,7 @@
  * EpollTest.cpp
  *
  *  Created on: Mar 13, 2014
- *      Author: root
+ *      Author: Robert
  */
 
 
@@ -10,6 +10,9 @@
 #include <sys/epoll.h>
 
 
+void epoll_test()
+{
 
+}
 
 
