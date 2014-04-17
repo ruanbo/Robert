@@ -11,23 +11,23 @@
 
 
 
-#include "TestFileHeader.h"
+#include "test_files/TestFileHeader.h"
 
-#include "PyFuncsHeader.h"
+#include "Python/PyFuncsHeader.h"
 
-#include "AsioFuncHead.h"
+#include "BoostAsio/AsioFuncHead.h"
 
 #include "Pattern/PatternHead.h"
 
 void all_test_func_entry()
 {
-//	test_file_funcs();
+	test_file_funcs();
 
 //	py_test_funcs();
 
 //	boost_asio_test_head();
 
-	pattern_design_test_func();
+//	pattern_design_test_func();
 }
 
 

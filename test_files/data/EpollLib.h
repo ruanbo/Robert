@@ -16,15 +16,33 @@
 #include <string.h>
 #include <iostream>
 
-#include <smart_ptr.h>
+#include "common/smart_ptr.h"
+#include <list>
 
 #define MAX_EPOLL_EVENTS 1024
 
-struct my_event : public smart_count
+struct MysgData : public smart_count
 {
-	void * s;
-	bool read;
-	bool write;
+	std::string _data;
+	int _fd;
+
+	MysgData()
+	{
+		_data = "";
+		_fd = 0;
+	}
+};
+typedef smart_ptr<MysgData> MyEventPtr;
+
+
+struct RecvQueue : public smart_count
+{
+	list<MyEventPtr> _recvs;
+};
+
+struct SendQueue : public smart_count
+{
+	list<MyEventPtr> _sends;
 };
 
 
@@ -37,8 +55,7 @@ private:
 
 	struct epoll_event* _events;
 
-	struct my_event _my_events[1024];
-
+	struct MysgData _my_events[1024];
 
 
 public:

@@ -35,6 +35,8 @@ void timer_test();
 
 void thread_lib_test();
 
+void network_test();
+
 void test_file_funcs()
 {
 //	core_down_test();
@@ -61,7 +63,9 @@ void test_file_funcs()
 
 //	timer_test();
 
-	thread_lib_test();
+//	thread_lib_test();
+
+	network_test();
 }
 
 

@@ -8,7 +8,7 @@
 #ifndef MODULE_H_
 #define MODULE_H_
 
-#include "Define.h"
+#include "common/Define.h"
 
 #include <pthread.h>
 
