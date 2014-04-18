@@ -68,7 +68,7 @@ void build_pattern_test()
 	ThinBuilder *my_builder = new ThinBuilder();
 //	FatBuilder *my_builder = new FatBuilder();
 
-	director.set_builder(thin_builder);
+	director.set_builder(my_builder);
 	director.create();
 
 }
