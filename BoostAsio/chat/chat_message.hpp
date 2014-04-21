@@ -37,7 +37,7 @@ public:
 	}
 
 public:
-	const char* dat()const
+	const char* data()const
 	{
 		return _data;
 	}
@@ -57,6 +57,10 @@ public:
 		return _data + header_length;
 	}
 
+	char* body()
+	{
+		return _data + header_length;
+	}
 	size_t body_length()const
 	{
 		return _body_length;
