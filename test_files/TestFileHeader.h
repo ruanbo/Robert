@@ -39,6 +39,8 @@ void network_test();
 
 void time_zone_test();
 
+void simple_client_test();
+
 void test_file_funcs()
 {
 //	core_down_test();
@@ -69,7 +71,9 @@ void test_file_funcs()
 
 //	network_test();
 
-	time_zone_test();
+//	time_zone_test();
+
+	simple_client_test();
 }
 
 
