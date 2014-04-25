@@ -101,4 +101,42 @@ public:
 	}
 };
 
+
+/*
+ * 只添加一种装饰，不用抽象出装饰基类
+ */
+class DecoratorOnlyOne : public Component
+{
+private:
+	Component *_com;
+public:
+	DecoratorOnlyOne(Component *com) { _com = com; }
+	~DecoratorOnlyOne()
+	{
+		if(_com) delete _com;
+	}
+
+	void Operator()
+	{
+		_com->Operator();
+		add_behavor();
+	}
+
+	void add_behavor()
+	{
+		std::cout << "附加功能" << std::endl;
+	}
+};
+
+void pattern_decorator_test()
+{
+	Component* com = new ConcreteComponent();
+
+	Decorator* dec = new ConcreteDecoratorA(com);
+	dec = new ConcreteDecoratorB(com);
+
+	dec->Operator();
+	delete com;
+}
+
 #endif /* DECORATOR_H_ */
