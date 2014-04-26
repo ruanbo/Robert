@@ -41,6 +41,10 @@ void time_zone_test();
 
 void simple_client_test();
 
+void pointer_test();
+
+void thread_mutex_test();
+
 void test_file_funcs()
 {
 //	core_down_test();
@@ -73,7 +77,11 @@ void test_file_funcs()
 
 //	time_zone_test();
 
-	simple_client_test();
+//	simple_client_test();
+
+//	pointer_test();
+
+	thread_mutex_test();
 }
 
 
