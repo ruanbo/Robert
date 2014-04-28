@@ -45,6 +45,8 @@ void pointer_test();
 
 void thread_mutex_test();
 
+void pthread_pool_test();
+
 void test_file_funcs()
 {
 //	core_down_test();
@@ -81,7 +83,9 @@ void test_file_funcs()
 
 //	pointer_test();
 
-	thread_mutex_test();
+//	thread_mutex_test();
+
+	pthread_pool_test();
 }
 
 

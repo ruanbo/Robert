@@ -19,6 +19,7 @@
 
 #include "Pattern/PatternHead.h"
 
+
 void all_test_func_entry()
 {
 	test_file_funcs();
