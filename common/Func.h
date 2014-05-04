@@ -19,6 +19,8 @@
 
 #include "Pattern/PatternHead.h"
 
+#include "Algorithm/AlgorithmHeaderFile.h"
+
 
 void all_test_func_entry()
 {

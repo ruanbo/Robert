@@ -11,7 +11,9 @@
 #include <pthread.h>
 #include <iostream>
 #include <string>
+#include <cstddef>
 
+#include "PoolDef.hpp"
 
 enum ThreadState
 {
@@ -33,18 +35,22 @@ private:
 	ThreadState _state;
 	pthread_mutex_t _mutex;
 	pthread_cond_t _cond;
+protected:
+	PoolManager *_pool_mamager;
 
 public:
 	CThread();
 	virtual ~CThread();
 
 public:
-	bool start();
+	bool start(PoolManager* pool_manager);
 	void wait();
 	bool wakeup();
 	void terminate();
 
 	void set_sate(ThreadState state);
+
+	pthread_t get_thread_id()const;
 
 	virtual void run() = 0;
 };

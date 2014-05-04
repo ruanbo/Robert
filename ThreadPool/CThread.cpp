@@ -23,6 +23,8 @@ CThread::CThread()
 	_state = TS_NONE;
 	pthread_mutex_init(&_mutex, NULL);
 	pthread_cond_init(&_cond, NULL);
+
+	_pool_mamager = NULL;
 }
 
 CThread::~CThread()
@@ -32,8 +34,10 @@ CThread::~CThread()
 	pthread_cond_destroy(&_cond);
 }
 
-bool CThread::start()
+bool CThread::start(PoolManager* pool_manager)
 {
+	_pool_mamager = pool_manager;
+
 	int ret = pthread_create(&_thread_id, NULL, &ThreadRun, (void*)this);
 
 	if(ret != 0)
@@ -73,7 +77,8 @@ void CThread::set_sate(ThreadState state)
 	_state = state;
 }
 
-void CThread::run()
+pthread_t CThread::get_thread_id()const
 {
-
+	return _thread_id;
 }
+

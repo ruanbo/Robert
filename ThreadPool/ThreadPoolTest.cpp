@@ -8,13 +8,16 @@
 #include <cstdlib>
 #include <pthread.h>
 #include <list>
+#include <stdint.h>
+#include <sys/time.h>
 
 
 #include <iostream>
 using namespace std;
 
 
-#define POOL_SIZE  4
+#define POOL_SIZE  10
+#define TEST_TIME_US 5000000   // 5秒
 
 struct MsgManager
 {
@@ -27,6 +30,7 @@ struct MsgManager
 
 	list<int> _msg;
 };
+static int handled_msg = 0;
 
 static void *thread_provider(void *arg)
 {
@@ -38,14 +42,14 @@ static void *thread_provider(void *arg)
 	while(msg_mngr->_is_running)
 	{
 		i++;
-		pthread_mutex_lock(&msg_mngr->_mutex);
+//		pthread_mutex_lock(&msg_mngr->_mutex);
 
 		msg_mngr->_msg.push_back(i);
 
 		pthread_cond_signal(&msg_mngr->_cond);
 
-		pthread_mutex_unlock(&msg_mngr->_mutex);
-		usleep(1);
+//		pthread_mutex_unlock(&msg_mngr->_mutex);
+//		usleep(1);
 	}
 
 	pthread_exit(NULL);
@@ -65,9 +69,14 @@ static void *thread_work(void *arg)
 	{
 		pthread_mutex_lock(&msg_mngr->_mutex);
 		pthread_cond_wait(&msg_mngr->_cond, &msg_mngr->_mutex);
-		int i = msg_mngr->_msg.front();
-		cout << "pop msg:" << i << ",  id:" << id << endl;
-		msg_mngr->_msg.pop_front();
+//		int i = msg_mngr->_msg.front();
+//		cout << "pop msg:" << i << ",  id:" << id << endl;
+		if(msg_mngr->_msg.empty() == false)
+		{
+			handled_msg++;
+			msg_mngr->_msg.pop_front();
+		}
+
 		pthread_mutex_unlock(&msg_mngr->_mutex);
 	}
 
@@ -101,20 +110,38 @@ void pthread_pool_test()
 	}
 
 
-	string str;
+//	string str;
+//	while(true)
+//	{
+//		cin >> str;
+//
+//		if(str == "quit")
+//		{
+//			break;
+//		}
+//		sleep(1);
+//	}
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	uint64_t begin_us = tv.tv_sec * 1000000 + tv.tv_usec;
+
 	while(true)
 	{
-		cin >> str;
+		usleep(10);
+		struct timeval tv;
+		gettimeofday(&tv, NULL);
+		uint64_t now_us = tv.tv_sec * 1000000 + tv.tv_usec;
 
-		if(str == "quit")
+		if(now_us - begin_us >= TEST_TIME_US)
 		{
 			break;
 		}
-		sleep(1);
 	}
+
 	msg_mngr->_is_running = false;
 
-	cout << "final msg:" << msg_mngr->_msg.size() << endl;
+	cout << "left msg:" << msg_mngr->_msg.size() << endl;
+	cout << "handled msg:" << handled_msg << endl;
 
 	sleep(1);
 

@@ -8,26 +8,36 @@
 #ifndef THREADPOOL_H_
 #define THREADPOOL_H_
 
-#include "CThread.h"
+#include "TaskThread.h"
+#include <list>
 
-#define THREAD_NUM = 10
 
+typedef std::list<TaskThread*> ThreadList;
 
 class ThreadPool
 {
 private:
-	int _thread_num;
-	int _normal_thread_num;
+	PoolManager* _pool_manager;
 
-	pthread_mutex_t _idle_mutex;
-	pthread_mutex_t _busy_mutex;
-	pthread_mutex_t _wait_mutex;
-	pthread_cond_t _wait_cond;
-
+	ThreadList _threads;
 
 public:
 	ThreadPool();
 	virtual ~ThreadPool();
+
+private:
+	void create_new_thread();
+
+public:
+	void start();
+
+	void stop();
 };
+
+
+
+
+
+
 
 #endif /* THREADPOOL_H_ */

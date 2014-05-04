@@ -47,6 +47,12 @@ void thread_mutex_test();
 
 void pthread_pool_test();
 
+void thread_pool_class_test();
+
+void suspend_thread_test();
+
+void algorithms_test();
+
 void test_file_funcs()
 {
 //	core_down_test();
@@ -85,7 +91,13 @@ void test_file_funcs()
 
 //	thread_mutex_test();
 
-	pthread_pool_test();
+//	pthread_pool_test();
+
+//	thread_pool_class_test();
+
+//	suspend_thread_test();
+
+	algorithms_test();
 }
 
 
