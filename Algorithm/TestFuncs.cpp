@@ -9,8 +9,9 @@
 
 void algorithms_test()
 {
-	quick_sort_test();
+//	quick_sort_test();
 
+	merge_sort_test();
 
 }
 

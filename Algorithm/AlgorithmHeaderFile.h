@@ -20,7 +20,7 @@ using namespace std;
 void quick_sort_test();
 
 
-
+void merge_sort_test();
 
 
 
