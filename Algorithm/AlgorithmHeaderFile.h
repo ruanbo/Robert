@@ -16,11 +16,27 @@ using namespace std;
 
 #include <vector>
 
+#include <algorithm>
+#include <functional>
+
 
 void quick_sort_test();
 
 
 void merge_sort_test();
+
+void heap_test();
+
+void functionor_test();
+
+
+
+
+//template<typename Func>
+//void m_heap(vector<int>& array, int first, int last, Func);
+//
+
+
 
 
 

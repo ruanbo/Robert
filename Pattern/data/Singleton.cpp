@@ -12,28 +12,28 @@
 #include <pthread.h>
 #include <iostream>
 
-Singleton0* Singleton0::_instance = new Singleton0();
-
-Singleton0::Singleton0()
-{
-	std::cout << "Singleton0()" << std::endl;
-}
-
-Singleton0::~Singleton0()
-{
-	std::cout << "~Singleton0()" << std::endl;
-}
-
-Singleton0* Singleton0::get_instance()
-{
-	return _instance;
-}
-
-
-void Singleton0::show()
-{
-	std::cout << "a show of 0" << std::endl;
-}
+//Singleton0* Singleton0::_instance = new Singleton0();
+//
+//Singleton0::Singleton0()
+//{
+//	std::cout << "Singleton0()" << std::endl;
+//}
+//
+//Singleton0::~Singleton0()
+//{
+//	std::cout << "~Singleton0()" << std::endl;
+//}
+//
+//Singleton0* Singleton0::get_instance()
+//{
+//	return _instance;
+//}
+//
+//
+//void Singleton0::show()
+//{
+//	std::cout << "a show of 0" << std::endl;
+//}
 
 /////////
 

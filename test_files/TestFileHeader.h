@@ -53,6 +53,10 @@ void suspend_thread_test();
 
 void algorithms_test();
 
+void multi_process_test();
+
+void mysql_tests();
+
 void test_file_funcs()
 {
 //	core_down_test();
@@ -97,7 +101,11 @@ void test_file_funcs()
 
 //	suspend_thread_test();
 
-	algorithms_test();
+//	algorithms_test();
+
+//	multi_process_test();
+
+	mysql_tests();
 }
 
 

@@ -14,8 +14,8 @@
 
 void singleton_test()
 {
-	Singleton0 * inst0 = Singleton0::get_instance();
-	inst0->show();
+//	Singleton0 * inst0 = Singleton0::get_instance();
+//	inst0->show();
 
 	Singleton1 * inst1 = Singleton1::get_instance();
 	inst1->show();

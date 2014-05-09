@@ -84,6 +84,7 @@ int main()
 
 	all_test_func_entry();
 
+
 //	string str;
 //
 //	while(true)
@@ -98,7 +99,7 @@ int main()
 //		}
 //	}
 
-	cout << endl << "end of main" << endl;
+	cout << endl << "end of main" << endl << endl;
 
 	return 0;
 }

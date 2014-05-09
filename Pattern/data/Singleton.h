@@ -13,20 +13,20 @@
 // 饿汉模式, 无论是否调用该类的实例，在程序开始时就会产生一个该类的实例，在以后仅返回这个实例
 // 这种方法是线程安全的，因为静态实例的初始化在程序进入主函数之前就由主线程以单线程方式完成了初始化
 // 主程序结束后，不会自动调用析构函数
-class Singleton0
-{
-private:
-	static Singleton0* _instance;
-	Singleton0();
-
-public:
-	virtual ~Singleton0();
-
-public:
-	static Singleton0* get_instance();
-
-	void show();
-};
+//class Singleton0
+//{
+//private:
+//	static Singleton0* _instance;
+//	Singleton0();
+//
+//public:
+//	virtual ~Singleton0();
+//
+//public:
+//	static Singleton0* get_instance();
+//
+//	void show();
+//};
 
 
 

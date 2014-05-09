@@ -84,6 +84,15 @@ void show_coll(const T & coll)
 	cout << endl;
 }
 
+//
+//template<typename T>
+//void swap(vector<T>& array, int pos1, int pos2)
+//{
+//	T temp = array[pos1];
+//
+//	array[pos1] = array[pos2];
+//	array[pos2] = temp;
+//}
 
 
 
