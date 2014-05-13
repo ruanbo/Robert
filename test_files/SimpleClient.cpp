@@ -17,6 +17,8 @@
 #include <pthread.h>
 #include <fcntl.h>
 
+#include <netinet/tcp.h>
+
 #include "common/TypesDef.h"
 
 using namespace std;
@@ -25,6 +27,14 @@ const std::string SERVER_ADDR = "127.0.0.1";
 const int SERVER_PORT = 1002;
 
 static bool is_client_run = true;
+
+int val;
+socklen_t len;
+
+void show_val_len(const string& msg="")
+{
+	cout << msg << ", val:" << val << ",  len:" << len << endl;
+}
 
 void *client_thread_run(void *)
 {
@@ -36,6 +46,32 @@ void *client_thread_run(void *)
 		std::cout << "socket() error" << std::endl;
 		return NULL;
 	}
+
+
+	getsockopt(client_sock, SOL_SOCKET, SO_RCVBUF, &val, &len);
+	show_val_len("SO_RCVBUF");
+
+	getsockopt(client_sock, SOL_SOCKET, SO_SNDBUF, &val, &len);
+	show_val_len("SO_SNDBUF");
+
+//	setsockopt(client_sock, SOL_SOCKET, SO_)
+
+	int on_off = 1;
+	int set_ret = setsockopt(client_sock, SOL_TCP, TCP_NODELAY, &on_off, sizeof(&on_off));
+	if(set_ret != 0)
+	{
+		cout << "setsockopt() error" << endl;
+	}
+
+	int mss = 2048;
+	set_ret = setsockopt(client_sock, SOL_TCP, TCP_MAXSEG, &mss, sizeof(mss));
+	if(set_ret != 0)
+	{
+		cout << "setsockopt() error" << endl;
+	}
+
+//	setsockopt(client_sock, SOL_IP)
+
 
 
 	if(false)
@@ -103,11 +139,11 @@ void *client_thread_run(void *)
 //		msg.append("msg from client:");
 //		msg.append(boost::lexical_cast<std::string>(num));
 
-		int wret = write(client_sock, msg.c_str(), msg.length());
-		if(wret < 0)
-		{
-			err_num ++;
-		}
+//		int wret = write(client_sock, msg.c_str(), msg.length());
+//		if(wret < 0)
+//		{
+//			err_num ++;
+//		}
 
 		usleep(10);
 	}

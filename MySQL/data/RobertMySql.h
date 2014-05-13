@@ -27,11 +27,15 @@ public:
 
 	bool uninit();
 
+	void close_when_error();
+
 	bool conn_db(const std::string& host, int port, const std::string& db_name, const std::string& user, const std::string& password);
 
 	bool create_db(const std::string& db_name);
 
-	bool crate_tb(const std::string& tb_name);
+	bool crate_tb(const std::string& tb_name="test");
+
+	void find_data()const;
 
 
 };

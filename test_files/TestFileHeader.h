@@ -57,6 +57,8 @@ void multi_process_test();
 
 void mysql_tests();
 
+void exception_test();
+
 void test_file_funcs()
 {
 //	core_down_test();
@@ -105,7 +107,9 @@ void test_file_funcs()
 
 //	multi_process_test();
 
-	mysql_tests();
+//	mysql_tests();
+
+	exception_test();
 }
 
 
