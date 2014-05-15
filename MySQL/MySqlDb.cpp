@@ -42,6 +42,7 @@ void mysql_first_test()
 }
 
 
+
 void mysql_test()
 {
 	RobertMySql *rb_sql = new RobertMySql();

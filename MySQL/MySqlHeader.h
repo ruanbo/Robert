@@ -13,8 +13,11 @@
 
 #include <mysql/mysql.h>
 
+#include <MySQL/data/DeltaTime.h>
 
-void mysql_first_test();
 
+void mongo_cmp_test();
+
+void mysql_cmp_test();
 
 #endif /* MYSQLHEADER_H_ */

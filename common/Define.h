@@ -13,6 +13,7 @@
 #include <iostream>
 using namespace std;
 
+#include <sys/time.h>
 
 #include <vector>
 #include <map>
@@ -83,6 +84,8 @@ void show_coll(const T & coll)
 	}
 	cout << endl;
 }
+
+int64_t get_now_us();
 
 //
 //template<typename T>

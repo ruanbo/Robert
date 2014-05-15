@@ -30,6 +30,7 @@ void multi_process_first()
 	}
 	else
 	{
+		process_entry(PT_LOGIC);
 		cout << "in father. getpid():" << getpid() << endl;
 	}
 

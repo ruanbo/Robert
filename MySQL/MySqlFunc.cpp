@@ -10,8 +10,10 @@
 
 void mysql_tests()
 {
-	mysql_first_test();
 
+//	mongo_cmp_test();
+
+	mysql_cmp_test();
 
 }
 

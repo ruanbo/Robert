@@ -85,7 +85,6 @@ int main()
 
 	all_test_func_entry();
 
-
 //	string str;
 //
 //	while(true)
