@@ -12,7 +12,7 @@ string create_tb_players = "Create Table If Not Exists players(id INT(11) Unique
 
 string tb_insert_players = "Insert Into players Values(%d, '%s', 1, 1, 2)";
 
-string tb_find_player = "Select 1 From players Where id=%d Limit 1";
+string tb_find_player = "Select * From players Where id=%d Limit 1";
 
 
 void mysql_insert_test(MYSQL *sql_inst)
@@ -41,7 +41,7 @@ void mysql_find_test(MYSQL *sql_inst)
 	string find_str = (boost::format(tb_find_player) % 1000).str();
 	DeltaTime delta_time("(MySQL) find 10000 record");
 
-	for(int i=0; i<10000; ++i)
+	for(int i=0; i<1; ++i)
 	{
 		int ret = mysql_real_query(sql_inst, find_str.c_str(), find_str.length());
 		if(ret != 0)
@@ -50,11 +50,34 @@ void mysql_find_test(MYSQL *sql_inst)
 			return;
 		}
 
-		MYSQL_RES *result = mysql_store_result(sql_inst);
-		mysql_free_result(result);
+		MYSQL_RES *sql_ret = mysql_store_result(sql_inst);
+		if(sql_ret == NULL)
+		{
+			continue;
+		}
+
+		my_ulonglong row_num = mysql_num_rows(sql_ret);
+		my_ulonglong col_num = mysql_num_fields(sql_ret);
+
+		for(my_ulonglong i=0; i<row_num; ++i)
+		{
+			MYSQL_ROW mysql_row = mysql_fetch_row(sql_ret);
+
+			for(my_ulonglong j=0; j<col_num; ++j)
+			{
+				printf("[Row %d, Col %d] ==> [%s] \n", i+1, j+2, mysql_row[j]);
+			}
+		}
+
+		mysql_free_result(sql_ret);
 	}
 }
 
+//=======
+void mysql_c_api_test(MYSQL *sql_inst)
+{
+
+}
 
 void mysql_cmp_test()
 {
